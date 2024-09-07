@@ -86,7 +86,7 @@ export default function Contact() {
                             </Card>
                             <Card>
                                 <CardHeader>
-                                    <CardTitle>Envíame un mensaje</CardTitle>
+                                    <CardTitle>Send me a message</CardTitle>
                                 </CardHeader>
                                 <CardContent>
                                     <form onSubmit={handleSubmit} className="space-y-4">
