@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Mail, Phone, MapPin, Linkedin, GithubIcon } from 'lucide-react'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer';
+import { sendContactEmail } from '@/lib/actions';
 
 export default function Contact() {
     const [contact, setContact] = useState({
@@ -15,6 +16,8 @@ export default function Contact() {
         email: '',
         message: ''
     })
+    const [loading, setLoading] = useState(false)
+    const [status, setStatus] = useState('')
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setContact({
@@ -23,10 +26,27 @@ export default function Contact() {
         })
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         // Aquí iría la lógica para enviar el formulario
-        
+        setLoading(true)
+        try {
+            const result = await sendContactEmail(contact)
+
+            if (result.success) {
+                setStatus('Message sent successfully!')
+                setContact({ name: '', email: '', message: '' })
+                setLoading(false)
+            } else {
+                setStatus('Error sending the message. Please try again.')
+                setLoading(false)
+            }
+        } catch (error) {
+            console.error('Error sending the message:', error)
+            setLoading(false)
+            setStatus('Error sending the message. Please try again.')
+        }
+
     }
 
     return (
@@ -35,11 +55,11 @@ export default function Contact() {
             <main className="flex-1 p-4 md:px-20">
                 <div className="bg-background text-foreground min-h-screen py-12">
                     <div className="container mx-auto px-4">
-                        <h1 className="text-4xl font-bold mb-8 text-center">Contacto</h1>
+                        <h1 className="text-4xl font-bold mb-8 text-center">Contact</h1>
                         <div className="grid md:grid-cols-2 gap-8">
                             <Card className="bg-secondary">
                                 <CardHeader>
-                                    <CardTitle>Información de Contacto</CardTitle>
+                                    <CardTitle>Contact Information</CardTitle>
                                 </CardHeader>
                                 <CardContent className="space-y-4">
                                     <div className="flex items-center space-x-3">
@@ -52,7 +72,7 @@ export default function Contact() {
                                     </div>
                                     <div className="flex items-center space-x-3">
                                         <MapPin className="text-primary" />
-                                        <span>Paraná, Argentina</span>
+                                        <span>Paraná, Entre Rios, Argentina</span>
                                     </div>
                                     <div className="flex space-x-4 mt-6">
                                         <a href="https://www.linkedin.com/in/rodrigo-deganutti-330812223/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -71,7 +91,7 @@ export default function Contact() {
                                 <CardContent>
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div className="space-y-2">
-                                            <Label htmlFor="name">Nombre</Label>
+                                            <Label htmlFor="name">Name</Label>
                                             <Input
                                                 id="name"
                                                 value={contact.name}
@@ -92,7 +112,7 @@ export default function Contact() {
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="message">Mensaje</Label>
+                                            <Label htmlFor="message">Message</Label>
                                             <Textarea
                                                 id="message"
                                                 value={contact.message}
@@ -102,8 +122,9 @@ export default function Contact() {
                                             />
                                         </div>
                                         <Button type="submit" className="w-full bg-primary text-background hover:bg-primary/90">
-                                            Enviar Mensaje
+                                            {loading ? 'Sending...' : 'Send'}
                                         </Button>
+                                        {status && <p className="text-center text-sm text-accent">{status}</p>}
                                     </form>
                                 </CardContent>
                             </Card>

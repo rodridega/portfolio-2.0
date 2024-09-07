@@ -6,46 +6,10 @@ import { Badge } from "@/components/ui/badge"
 import { Github, ExternalLink } from 'lucide-react'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import pokedex from '@/public/pokedex.png'
-import cotibot from '@/public/cotibot.png'
-import beachHouse from '@/public/beach-house.png'
-import portfolio from '@/public/portfolio.png'
+import { projects } from '@/lib/projects'
 
 export default function Projects() {
-    const projects = [
-        {
-            title: "Portfolio Website",
-            description: "A personal portfolio website built with Next.js, Tailwind CSS and TypeScript.",
-            image: portfolio,
-            tags: ["Next.js", "Tailwind CSS", "TypeScript", "Responsive Design", "Shadcn/ui Components"],
-            githubLink: "https://github.com/yourusername/ecommerce-platform",
-            liveLink: "https://ecommerce-platform-demo.com"
-        },
-        {
-            title: "Beach House reservation app",
-            description: "A full-stack application for booking beach houses with React, Express, PostgreSQL and Material-UI.",
-            image: beachHouse,
-            tags: ["React", "Tailwind", "Node.js", "PostgreSQL", "Express", "Material-UI"],
-            githubLink: "",
-            liveLink: "https://saratoga-reservation.onrender.com/"
-        },
-        {
-            title: "Cotibot",
-            description: "A Full stack personalized real-time home renovation estimator for unfinished properties, capturing lead data.",
-            image: cotibot,
-            tags: ["React.js", "Bootstrap", "Node.js", "Express.js", "PostgreSQL", "Hubspot API Integration", "Responsive Design"],
-            githubLink: "",
-            liveLink: "https://cotibot.vivvidero.com"
-        },
-        {
-            title: "Pokedex App",
-            description: "A Pokedex application that fetches data from an external API and displays Pokemon information.",
-            image: pokedex,
-            tags: ["React.js", "SASS", "API Integration", "Responsive Design", "Infinite Scroll",],
-            githubLink: "https://github.com/rodridega/pokedex/tree/master",
-            liveLink: "https://pokedex-pi-two-64.vercel.app/"
-        }
-    ]
+    
 
     return (
         <div className="flex flex-col min-h-screen bg-background text-primary">
@@ -53,10 +17,10 @@ export default function Projects() {
             <main className="flex-1 p-4 md:px-20">
                 <div className="bg-background text-foreground min-h-screen py-12">
                     <div className="container mx-auto px-4">
-                        <h1 className="text-4xl font-bold mb-8 text-center">Mis Proyectos</h1>
+                        <h1 className="text-4xl font-bold mb-8 text-center">My Projects</h1>
                         <div className="grid md:grid-cols-2 gap-8">
                             {projects.map((project, index) => (
-                                <Card key={index} className="flex flex-col">
+                                <Card key={index} className="flex flex-col" id={project.title} >
                                     <CardHeader>
                                         <CardTitle>{project.title}</CardTitle>
                                         <CardDescription>{project.description}</CardDescription>
@@ -86,7 +50,7 @@ export default function Projects() {
                                                 <Button asChild variant="outline" className="flex items-center gap-2">
                                                     <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
                                                         <Github className="w-4 h-4" />
-                                                        Código
+                                                        Code
                                                     </Link>
                                                 </Button>
                                             }
@@ -94,7 +58,7 @@ export default function Projects() {
                                             <Button asChild className="ml-auto flex items-center gap-2 bg-primary text-background hover:bg-primary/90">
                                                 <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
                                                     <ExternalLink className="w-4 h-4" />
-                                                    Demo en vivo
+                                                    Live Demo
                                                 </Link>
                                             </Button>
                                         </div>
