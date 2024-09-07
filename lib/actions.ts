@@ -9,6 +9,11 @@ interface ContactFormData {
 }
 
 export async function sendContactEmail(formData: ContactFormData) {
+
+    console.log(process.env.NEXT_PUBLIC_EMAIL_USER)
+    console.log(process.env.NEXT_PUBLIC_EMAIL_PASS);
+    
+
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
