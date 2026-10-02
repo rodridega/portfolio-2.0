@@ -12,7 +12,7 @@ import { DownloadButton } from './DownloadButton'
 export default function AboutMe() {
     const skills = [
         "JavaScript", "React", "Node.js", "TypeScript", "Next.js",
-        "HTML5", "CSS3", "Tailwind CSS", "Git", "RESTful APIs"
+        "WordPress", "HTML5", "CSS3", "Tailwind CSS", "Git", "RESTful APIs"
     ]
 
     
@@ -31,7 +31,7 @@ export default function AboutMe() {
                                     <CardContent className="p-6">
                                         <h2 className="text-2xl font-semibold mb-4">Hi! I am Rodrigo</h2>
                                         <p className="mb-4">
-                                        I am a full stack web developer passionate about creating exceptional digital experiences. With 3 years of experience in web development, I specialize in building robust and scalable applications using the latest technologies.
+                                        I am a full stack web developer passionate about creating exceptional digital experiences. With over 4 years of experience in web development, I specialize in building robust and scalable applications using the latest technologies.
                                         </p>
                                         <p>
                                         Outside the world of code, I am a clinical doctor and enjoy spending time with my family, playing video games, exercising, and board games. I firmly believe in continuous learning and am always looking for new challenges to expand my skills.
@@ -64,8 +64,10 @@ export default function AboutMe() {
                                     <CardContent className="p-6">
                                         <h3 className="text-xl font-semibold mb-3"> Work Experience </h3>
                                         <ul className="list-disc list-inside space-y-2">
-                                            <li>Full Stack Developer at Vivvidero, April 2022 - Present</li>
-                                            <li>Full Stack Developer at Iris Properties, March 2024 - Present</li>
+                                            <li>Full Stack &amp; WordPress Developer at Argeniss Software (client: Amplity), January 2025 - Present</li>
+                                            <li>Clinical Doctor at Hospital de la Baxada &quot;Dra. Teresa Ratto&quot;, April 2020 - Present</li>
+                                            <li>Full Stack Developer at Personal Villas, April 2024 - June 2025</li>
+                                            <li>Full Stack Developer at Vivvidero, April 2022 - February 2025</li>
                                         </ul>
                                     </CardContent>
                                 </Card>

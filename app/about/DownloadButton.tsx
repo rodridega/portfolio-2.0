@@ -4,7 +4,7 @@ import React from 'react'
 
 export const DownloadButton = () => {
 
-    const downloadLocalPDF = (filename: string) => {
+    const downloadLocalFile = (filename: string) => {
         const fileUrl = '/' + filename;
         const link = document.createElement('a');
         link.href = fileUrl;
@@ -19,10 +19,7 @@ export const DownloadButton = () => {
     };
 
     const handleDownloadCV = () => {
-        console.log('Downloading CV');
-
-        // Asegúrate de que 'cv.pdf' existe en la carpeta public
-        downloadLocalPDF('Rodrigo Deganutti CV.pdf');
+        downloadLocalFile('CV Rodrigo Deganutti.docx');
     }
 
     return (

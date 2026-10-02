@@ -20,7 +20,12 @@ export default function Projects() {
                         <h1 className="text-4xl font-bold mb-8 text-center">My Projects</h1>
                         <div className="grid md:grid-cols-2 gap-8">
                             {projects.map((project, index) => (
-                                <Card key={index} className="flex flex-col" id={project.title} >
+                                <Card
+                                    key={index}
+                                    className="flex flex-col transition-all hover:shadow-lg hover:-translate-y-1 animate-in fade-in duration-500"
+                                    style={{ animationDelay: `${index * 75}ms` }}
+                                    id={project.title}
+                                >
                                     <CardHeader>
                                         <CardTitle>{project.title}</CardTitle>
                                         <CardDescription>{project.description}</CardDescription>

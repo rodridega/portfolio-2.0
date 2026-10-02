@@ -10,22 +10,18 @@ interface ContactFormData {
 
 export async function sendContactEmail(formData: ContactFormData) {
 
-    console.log(process.env.NEXT_PUBLIC_EMAIL_USER)
-    console.log(process.env.NEXT_PUBLIC_EMAIL_PASS);
-    
-
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 587,
         auth: {
-            user: process.env.NEXT_PUBLIC_EMAIL_USER,
-            pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
         },
     });
 
     try {
         await transporter.sendMail({
-            from: process.env.NEXT_PUBLIC_EMAIL_USER,
+            from: process.env.EMAIL_USER,
             to: 'rodridega@gmail.com', // Tu dirección de email
             subject: `Nuevo mensaje desde tu Portfolio de ${formData.name}`,
             text: `
